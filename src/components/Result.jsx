@@ -39,6 +39,7 @@ const ResultArea = styled.div`
   padding: 1rem;
   overflow-y: auto;
   border-radius: 15px;
+  word-wrap: break-word;
 `;
 
 const Result = () => {

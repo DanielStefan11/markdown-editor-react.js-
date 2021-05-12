@@ -5,23 +5,31 @@ import MarkedInput from './components/MarkedInput';
 import Result from './components/Result';
 import EditorContext from './contexts/editorContext';
 import colorVariables from './globalVariables';
+import ButtonComponent from './components/Button';
 
 const { lightBlue, darkGreen } = colorVariables;
 
 const AppContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: ${darkGreen};
-  padding: 2rem;
-
-  @media screen and (max-width: 650px) {
-    padding: 1rem;
-  }
 
   @media screen and (min-width: 769px) and (max-width: 960px) {
+    padding: 1rem;
+  }
+`;
+
+const InnerContainer = styled.div`
+  position: relative;
+  max-width: 1500px;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+
+  @media screen and (max-width: 450px) {
     padding: 1rem;
   }
 `;
@@ -55,15 +63,22 @@ function App() {
     setMarkdownText,
   };
 
+  const resetValue = () => {
+    setMarkdownText('');
+  };
+
   return (
     <EditorContext.Provider value={contextValue}>
       <GlobalStyle />
       <AppContainer>
-        <Title>Markdown Editor</Title>
-        <EditorContainer>
-          <MarkedInput />
-          <Result />
-        </EditorContainer>
+        <InnerContainer>
+          <ButtonComponent reset={resetValue}>Reset</ButtonComponent>
+          <Title>Markdown Editor</Title>
+          <EditorContainer>
+            <MarkedInput />
+            <Result />
+          </EditorContainer>
+        </InnerContainer>
       </AppContainer>
     </EditorContext.Provider>
   );
