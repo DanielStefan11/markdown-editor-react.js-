@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import GlobalStyle from './globalStyle';
-import styled from 'styled-components';
-import MarkedInput from './components/MarkedInput';
-import Result from './components/Result';
-import EditorContext from './contexts/editorContext';
-import colorVariables from './globalVariables';
-import ButtonComponent from './components/Button';
+import { useState } from "react";
+import GlobalStyle from "./globalStyle";
+import styled from "styled-components";
+import MarkedInput from "./components/MarkedInput";
+import Result from "./components/Result";
+import EditorContext from "./contexts/editorContext";
+import colorVariables from "./globalVariables";
 
 const { lightBlue, darkGreen } = colorVariables;
 
@@ -56,15 +55,11 @@ const EditorContainer = styled.div`
 `;
 
 function App() {
-  const [markdownText, setMarkdownText] = useState(() => '');
+  const [markdownText, setMarkdownText] = useState(() => "");
 
   const contextValue = {
     markdownText,
     setMarkdownText,
-  };
-
-  const resetValue = () => {
-    setMarkdownText('');
   };
 
   return (
@@ -72,7 +67,6 @@ function App() {
       <GlobalStyle />
       <AppContainer>
         <InnerContainer>
-          <ButtonComponent reset={resetValue}>Reset</ButtonComponent>
           <Title>Markdown Editor</Title>
           <EditorContainer>
             <MarkedInput />

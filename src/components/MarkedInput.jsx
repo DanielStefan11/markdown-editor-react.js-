@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import editorContext from '../contexts/editorContext';
-import colorVariables from '../globalVariables';
+import React, { useContext, useState } from "react";
+import styled from "styled-components";
+import editorContext from "../contexts/editorContext";
+import colorVariables from "../globalVariables";
+import ButtonComponent from "./Button";
 
 const { lightBlue, darkGreen } = colorVariables;
 
@@ -50,17 +51,25 @@ const TextArea = styled.textarea`
 `;
 
 const MarkedInput = () => {
+  const [textareaValue, setTextareaValue] = useState("");
   const { setMarkdownText } = useContext(editorContext);
 
   const onInputChange = (e) => {
     const newValue = e.currentTarget.value;
+    setTextareaValue(newValue);
     setMarkdownText(newValue);
+  };
+
+  const resetValue = (e) => {
+    setTextareaValue("");
+    setMarkdownText("");
   };
 
   return (
     <Container>
       <Title>Markdown Input</Title>
-      <TextArea onChange={onInputChange} />
+      <TextArea onChange={onInputChange} value={textareaValue} />
+      <ButtonComponent reset={resetValue}>Reset</ButtonComponent>
     </Container>
   );
 };
