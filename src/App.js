@@ -1,14 +1,17 @@
-import { useState } from "react";
-import GlobalStyle from "./globalStyle";
-import styled from "styled-components";
-import MarkedInput from "./components/MarkedInput";
-import Result from "./components/Result";
-import EditorContext from "./contexts/editorContext";
-import colorVariables from "./globalVariables";
+import { useState } from 'react';
+import GlobalStyle from './globalStyle';
+import styled from 'styled-components';
+import MarkedInput from './components/MarkedInput';
+import Result from './components/Result';
+import InfoContainer from './components/InfoContainer';
+import ButtonComponent from './components/Button';
+import EditorContext from './contexts/editorContext';
+import colorVariables from './globalVariables';
 
 const { lightBlue, darkGreen } = colorVariables;
 
 const AppContainer = styled.div`
+  position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -55,17 +58,23 @@ const EditorContainer = styled.div`
 `;
 
 function App() {
-  const [markdownText, setMarkdownText] = useState(() => "");
+  const [markdownText, setMarkdownText] = useState(() => '');
+  const [toggleDoc, setToggleDoc] = useState(() => false);
 
   const contextValue = {
     markdownText,
     setMarkdownText,
   };
 
+  const handleToggleDoc = () => {
+    setToggleDoc(!toggleDoc);
+  };
+
   return (
     <EditorContext.Provider value={contextValue}>
       <GlobalStyle />
       <AppContainer>
+        {/* <InfoContainer /> */}
         <InnerContainer>
           <Title>Markdown Editor</Title>
           <EditorContainer>
