@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import editorContext from "../contexts/editorContext";
 import colorVariables from "../globalVariables";
-import ButtonComponent from "./Button";
+import { ResetButton } from "./Buttons";
 
 const { lightBlue, darkGreen } = colorVariables;
 
@@ -69,7 +69,7 @@ const MarkedInput = () => {
     <Container>
       <Title>Markdown Input</Title>
       <TextArea onChange={onInputChange} value={textareaValue} />
-      <ButtonComponent reset={resetValue}>Reset</ButtonComponent>
+      <ResetButton reset={resetValue}>Reset</ResetButton>
     </Container>
   );
 };
