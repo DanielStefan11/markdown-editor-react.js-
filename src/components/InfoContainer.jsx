@@ -9,7 +9,7 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 30%;
   height: 100%;
   padding: 1.5rem;
   display: flex;
